@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="styles"/>
+	<body>
+		<referenceContainer name="page.main.actions">
+            <!-- GENERATE FEED -->
+            <block class="MyCompany\GoogleFeed\Block\Adminhtml\Feed\Actions" 
+                   name="googlefeed_manage_actions"/>
+        </referenceContainer>
+	</body>
+</page>  

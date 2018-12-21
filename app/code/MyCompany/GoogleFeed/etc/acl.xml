@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="MyCompany_GoogleFeed::googlefeed" title="MyCompany GoogleFeed" sortOrder="10">
+                    <resource id="MyCompany_GoogleFeed::menu" title="Menu" sortOrder="10">
+                        <resource id="MyCompany_GoogleFeed::manage" title="Manage Feed" sortOrder="10"/>
+                    </resource>
+                    <resource id="MyCompany_GoogleFeed::generate_feed" title="Generate Feed" sortOrder="20"/>
+                    <!-- module configuration -->
+                    <resource id="MyCompany_GoogleFeed::config" title="Manage module configuration" sortOrder="30"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
