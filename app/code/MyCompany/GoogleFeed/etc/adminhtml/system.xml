@@ -20,5 +20,7 @@
                     <label>Google Feed Description</label>
                 </field>
             </group>
+        </section>
+        
     </system>
 </config>
