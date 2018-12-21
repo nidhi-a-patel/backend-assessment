@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MyCompany_GoogleFeed::googlefeed" title="Google Feeds" module="MyCompany_GoogleFeed" parent="Magento_Backend::system" sortOrder="10" dependsOnModule="MyCompany_GoogleFeed" resource="MyCompany_GoogleFeed::googlefeed"/>
+        <add id="MyCompany_GoogleFeed::googlefeed_manage" title="Google Feed Page" module="MyCompany_GoogleFeed" action="googlefeed/manage" parent="MyCompany_GoogleFeed::googlefeed" sortOrder="20" dependsOnModule="MyCompany_GoogleFeed" resource="MyCompany_GoogleFeed::googlefeed"/>
+    </menu>
+</config>
