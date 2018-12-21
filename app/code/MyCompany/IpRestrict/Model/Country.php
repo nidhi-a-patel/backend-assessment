@@ -6,8 +6,8 @@ class Country extends \Magento\Framework\Model\AbstractModel
     public function getCountryCode()
     {
 		$ip = $this->get_client_ip();
-		//$ip = '218.107.132.66';// CN Testing IP
-		$ip = '124.47.147.100';// AU Testing IP
+		$ip = '218.107.132.66';// CN Testing IP
+		//$ip = '124.47.147.100';// AU Testing IP
 		$ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
 		
         return $ipdat;

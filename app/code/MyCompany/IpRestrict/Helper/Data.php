@@ -11,6 +11,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * CMS Default no-route config path
      */
     const XML_PATH_RESTRICT_ENABLED = 'mycompany_iprestrict/settings/enabled';
+    const XML_PATH_RESTRICTED_COUNTRY = 'mycompany_iprestrict/settings/restricted_countries';
 
     public function isEnabled()
     {
