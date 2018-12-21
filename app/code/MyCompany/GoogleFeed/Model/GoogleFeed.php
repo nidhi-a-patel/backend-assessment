@@ -19,14 +19,21 @@ class GoogleFeed
      */
     public $store;
 
+    /**
+     * @var \MyCompany\GoogleFeed\Model\PriceConverter
+     */
+    public $conversion;
+
     public function __construct(
         \MyCompany\GoogleFeed\Helper\Data $helper,
         \MyCompany\GoogleFeed\Helper\Products $productFeedHelper,
-        \Magento\Store\Model\StoreManagerInterface $store
+        \Magento\Store\Model\StoreManagerInterface $store,
+        \MyCompany\GoogleFeed\Model\PriceConverter $conversion
     ) {
         $this->helper = $helper;
         $this->productFeedHelper = $productFeedHelper;
         $this->store = $store;
+        $this->conversion = $conversion;
     }
 
     public function getFeed($cData=true)
@@ -60,13 +67,14 @@ class GoogleFeed
     {
         $productCollection = $this->productFeedHelper->getFilteredProducts();
         $xml = "";
+        $conversionRate = $this->conversion->getConversionRate(); 
         foreach ($productCollection as $product) {
-            $xml .= "<item>".$this->buildProductFeed($product, $cData)."</item>";
+            $xml .= "<item>".$this->buildProductFeed($product, $conversionRate, $cData)."</item>";
         }
         return $xml;
     }
 
-    protected function buildProductFeed($product, $cData=false)
+    protected function buildProductFeed($product, $conversionRate, $cData=false)
     {
         $description = $this->fixDescription($product->getDescription());
         $xml  = $this->generateNode("title", $product->getName(), $cData);
@@ -78,6 +86,9 @@ class GoogleFeed
         $xml .= $this->generateNode("g:price", $this->priceFormat($price));
         // $xml .= $this->generateNode('g:price', $this->priceFormat($product->getFinalPrice()));
         $xml .= $this->generateNode("g:id", $product->getId());
+        if(!empty($conversionRate) && $conversionRate!='') {
+            $xml .= $this->generateNode("g:converted_price", $this->priceFormat($price * $conversionRate));
+        }
         return $xml;
     }
 
